@@ -33,3 +33,4 @@ jobs:
           cloud-url: s3://mwi-demo-infra-iac-state?profile=mwi-demo-manager
         env:
           AWS_PROFILE: mwi-demo-manager
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
