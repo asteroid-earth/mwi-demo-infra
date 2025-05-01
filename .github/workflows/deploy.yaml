@@ -26,11 +26,21 @@ jobs:
       - run: openssl x509 -text -in ./svid-out/svid.pem
       - run: mkdir /home/runner/.aws && mv /home/runner/work/mwi-demo-infra/mwi-demo-infra/action_support/aws_config /home/runner/.aws/config
       - uses: pulumi/actions@v6
+      - uses: actions/setup-node@v1
         with:
-          command: up
-          stack-name: demo
-          work-dir: ./pulumi
-          cloud-url: s3://mwi-demo-infra-iac-state?profile=mwi-demo-manager
+          node-version: 18.x
+      - run: npm install && pulumi install
+        working-directory: /home/runner/work/mwi-demo-infra/mwi-demo-infra/pulumi
+        env:
+          AWS_PROFILE: mwi-demo-manager
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+      - run: pulumi login s3://mwi-demo-infra-iac-state?profile=mwi-demo-manager
+        working-directory: /home/runner/work/mwi-demo-infra/mwi-demo-infra/pulumi
+        env:
+          AWS_PROFILE: mwi-demo-manager
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+      - run: pulumi up
+        working-directory: /home/runner/work/mwi-demo-infra/mwi-demo-infra/pulumi
         env:
           AWS_PROFILE: mwi-demo-manager
           PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
