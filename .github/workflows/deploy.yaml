@@ -15,7 +15,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - run: pwd
       - run: wget https://rolesanywhere.amazonaws.com/releases/1.5.0/X86_64/Linux/aws_signing_helper
       - run: chmod +x aws_signing_helper
       - name: Fetch Teleport binaries
@@ -29,17 +28,11 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 10
-      - run: pnpm install -g typescript && pulumi install
-        working-directory: /home/runner/work/mwi-demo-infra/mwi-demo-infra/pulumi
-        env:
-          AWS_PROFILE: mwi-demo-manager
-          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
-      - run: pulumi login s3://mwi-demo-infra-iac-state?profile=mwi-demo-manager
-        working-directory: /home/runner/work/mwi-demo-infra/mwi-demo-infra/pulumi
-        env:
-          AWS_PROFILE: mwi-demo-manager
-          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
-      - run: pulumi stack select demo && pulumi up --yes
+      - run: |
+          pnpm install -g typescript && \
+          pulumi install && \
+          pulumi login s3://mwi-demo-infra-iac-state?profile=mwi-demo-manager && \
+          pulumi stack select demo && pulumi up --yes
         working-directory: /home/runner/work/mwi-demo-infra/mwi-demo-infra/pulumi
         env:
           AWS_PROFILE: mwi-demo-manager
