@@ -1,0 +1,4 @@
+encryptionsalt: v1:eCMmnkHNE1U=:v1:S2iMFwElnZJ+XJRP:iJKD83LUq1gptHqzrYmgytOu0ewAAg==
+config:
+  aws:region: us-west-2
+  aws:profile: mwi-demo-manager

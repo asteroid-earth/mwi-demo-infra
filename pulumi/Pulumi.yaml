@@ -1,0 +1,16 @@
+name: mwi-demo-infra
+description: Manages infrastructure for MWI Demo environment
+runtime:
+  name: nodejs
+  options:
+    packagemanager: pnpm
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-typescript
+packages:
+  teleport:
+    source: terraform-provider
+    version: 0.11.0
+    parameters:
+      - terraform.releases.teleport.dev/gravitational/teleport
