@@ -24,6 +24,9 @@ jobs:
           version: 17.4.6
       - run: tbot start --oneshot -c ./action_support/bot.yaml
       - run: openssl x509 -text -in ./svid-out/svid.pem
+      - run: ls /home/runner/work/mwi-demo-infra/mwi-demo-infra/action_support
+      - run: ls /home/runner/work/mwi-demo-infra/mwi-demo-infra/svid-out/
+      - run: ls /home/runner/work/mwi-demo-infra/mwi-demo-infra
       - uses: pulumi/actions@v6
         with:
           command: up
