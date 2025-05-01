@@ -28,7 +28,6 @@ jobs:
       - uses: pulumi/actions@v6
         with:
           command: up
-          stack-name: mwi-demo-infra
           work-dir: ./pulumi
           cloud-url: s3://mwi-demo-infra-iac-state?profile=mwi-demo-manager
         env:
