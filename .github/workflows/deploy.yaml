@@ -29,7 +29,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 10
-      - run: pnpm install -g typescript && pnpm install && pulumi install
+      - run: pnpm install -g typescript && pulumi install
         working-directory: /home/runner/work/mwi-demo-infra/mwi-demo-infra/pulumi
         env:
           AWS_PROFILE: mwi-demo-manager
