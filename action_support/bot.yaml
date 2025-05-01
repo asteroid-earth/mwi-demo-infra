@@ -14,5 +14,7 @@ services:
     path: ./svid-out
   selector:
     labels:
-      env: mwi-demo
-      aws-account: dev-rel-staging
+      env:
+      - mwi-demo
+      aws-account:
+      - dev-rel-staging
