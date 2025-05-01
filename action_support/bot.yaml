@@ -1,0 +1,18 @@
+version: v2
+proxy_server: mwidemo.cloud.gravitational.io:443
+onboarding:
+  join_method: github
+  token: mwi-demo-aws-manager
+certificate_ttl: 1h
+renewal_interval: 30m
+storage:
+  type: memory
+services:
+- type: workload-identity-x509
+  destination:
+    type: directory
+    path: ./svid-out
+  selector:
+    labels:
+      env: mwi-demo
+      aws-account: dev-rel-staging
