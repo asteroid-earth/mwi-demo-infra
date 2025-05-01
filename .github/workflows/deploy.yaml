@@ -30,7 +30,7 @@ jobs:
           pnpm install -g typescript && \
           pulumi install && \
           pulumi login s3://mwi-demo-infra-iac-state?profile=mwi-demo-manager && \
-          pulumi stack select demo && pulumi up --yes
+          pulumi stack select demo && pulumi pre --diff
         working-directory: /home/runner/work/mwi-demo-infra/mwi-demo-infra/pulumi
         env:
           AWS_PROFILE: mwi-demo-manager

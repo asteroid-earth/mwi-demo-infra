@@ -3,8 +3,8 @@ proxy_server: mwidemo.cloud.gravitational.io:443
 onboarding:
   join_method: github
   token: mwi-demo-aws-manager
-certificate_ttl: 1h
-renewal_interval: 30m
+certificate_ttl: 20m
+renewal_interval: 10m
 storage:
   type: memory
 services:
