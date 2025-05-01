@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - main
+jobs:
+  pulumi:
+    permissions:
+      # The "id-token: write" permission is required or Machine ID will not be
+      # able to authenticate with the cluster.
+      id-token: write
+      contents: read
+    # if you added a workflow name in the previous step, make sure you use the same value her
+    name: pulumi-up
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - run: pwd
+      - run: wget https://rolesanywhere.amazonaws.com/releases/1.5.0/X86_64/Linux/aws_signing_helper
+      - run: chmod +x aws_signing_helper
+      - name: Fetch Teleport binaries
+        uses: teleport-actions/setup@v1
+        with:
+          version: 17.4.6
+      - run: tbot start --oneshot -c ./action_support/bot.yaml
+      - run: openssl x509 -text -in ./svid-out/svid.pem
+      - uses: pulumi/actions@v6
+        with:
+          command: up
+          stack-name: mwi-demo-infra
+          work-dir: ./pulumi
+          cloud-url: s3://mwi-demo-infra-iac-state?profile=mwi-demo-manager
+        env:
+          AWS_CONFIG_FILE: /home/runner/work/mwi-demo-infra/mwi-demo-infra/action_support/aws_config
+          AWS_PROFILE: mwi-demo-manager
