@@ -27,7 +27,7 @@ jobs:
       - run: mkdir /home/runner/.aws && mv /home/runner/work/mwi-demo-infra/mwi-demo-infra/action_support/aws_config /home/runner/.aws/config
       - uses: pulumi/actions@v6
         with:
-          command: up -v=5
+          command: up
           stack-name: mwi-demo-infra
           work-dir: ./pulumi
           cloud-url: 's3://mwi-demo-infra-iac-state?profile=mwi-demo-manager'
