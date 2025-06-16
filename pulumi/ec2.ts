@@ -120,7 +120,7 @@ cat << EOF > /home/ubuntu/ansible/playbook.yaml
       command: "apt upgrade -y"
 EOF
 
-apt install postgresql
+apt install postgresql -y
 
 sudo su ubuntu -c "mkdir /home/ubuntu/db_connect"
 
@@ -233,7 +233,7 @@ const ansibleJoinToken = new teleport.ProvisionToken("mwi-demo-ansible", {
     allows: [
       {
         awsAccount: "668558765449",
-        awsArn: "arn:aws:sts::668558765449:assumed-role/MWIDemoInstance/i-0d52946bc3499a84e"
+        awsArn: pulumi.interpolate`arn:aws:sts::668558765449:assumed-role/MWIDemoInstance/${ansibleInstance.id}`
       }
     ]
   },
