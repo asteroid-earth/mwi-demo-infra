@@ -1,9 +1,11 @@
 import vpcResources from "./vpc";
 import eksResources from "./eks";
 import rdsResources from "./rds";
-import ec2Resources from "./ec2";
+import ansibleResources from "./ansible";
+import w2wDemoResources from "./w2w-demo";
 
 vpcResources();
 eksResources();
 rdsResources();
-ec2Resources();
+ansibleResources();
+w2wDemoResources()
