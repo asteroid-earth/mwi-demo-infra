@@ -4,6 +4,7 @@ import { tags } from "./tags"
 
 export const vpc = new awsx.ec2.Vpc("mwi-demo",
   {
+    enableDnsHostnames: true,
     tags,
   }, { provider: awsxProvider});
 

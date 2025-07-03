@@ -33,6 +33,44 @@ export const instanceRolePolicy = new aws.iam.RolePolicy("w2w-demo-instance-role
     "Action": ["sts:GetCallerIdentity"],
     "Effect": "Allow",
     "Resource": "*"
+  },
+  {
+    "Effect": "Allow",
+    "Action": [
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:BatchGetImage",
+      "ecr:GetDownloadUrlForLayer",
+      "ecr:GetAuthorizationToken",
+      "ecr:DescribeRepositories",
+      "ecr:ListImages",
+      "ecr:DescribeImages",
+      "ecr:DescribeRegistry",
+      "ecr:GetRepositoryPolicy",
+      "ecr:ListTagsForResource",
+      "ecr:ListImages"
+    ],
+    "Resource": "arn:aws:ecr:us-west-2:668558765449:repository/mwi-demo-10bbb2a"
+  },
+  {
+    "Action": [
+      "ecr:GetAuthorizationToken"
+    ],
+    "Effect": "Allow",
+    "Resource": "*"
+  },
+  {
+    "Effect": "Allow",
+    "Action": [
+      "iam:CreateServiceLinkedRole"
+    ],
+    "Resource": "*",
+    "Condition": {
+      "StringEquals": {
+        "iam:AWSServiceName": [
+          "replication.ecr.amazonaws.com"
+        ]
+      }
+    }
   }
 ]
 }`

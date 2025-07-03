@@ -56,10 +56,6 @@ export const ansibleInstance = new aws.ec2.Instance("ansible-instance", {
   userData: `${getTeleportInitScript("ansible")}${getAnsibleInitScript()}`,
 }, { dependsOn: instanceJoinToken, provider: awsProvider });
 
-
-
-
-
 export const targetInstanceOne = new aws.ec2.Instance("target-instance-1", {
   ami: "ami-0e8c824f386e1de06", // ubuntu 24.04 arm64
   instanceType: aws.ec2.InstanceType.T4g_Micro,
