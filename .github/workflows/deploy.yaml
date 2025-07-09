@@ -35,7 +35,7 @@ jobs:
           pulumi install && \
           pulumi login s3://mwi-demo-infra-iac-state?profile=mwi-demo-manager && \
           pulumi stack select demo && pulumi pre --diff && pulumi stack
-          pulumi stack select && pulumi up --yes --skip-preview
+          pulumi stack select demo && pulumi up --yes --skip-preview
         working-directory: /home/runner/work/mwi-demo-infra/mwi-demo-infra/pulumi
         env:
           AWS_PROFILE: mwi-demo-manager
