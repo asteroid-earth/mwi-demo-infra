@@ -51,28 +51,14 @@ export const backend1WorkloadID = new teleport.WorkloadIdentity("w2w-demo-backen
   },
   spec: {
     spiffe: {
-      id: "/apps/w2w-demo/backend-1",
+      // In this Workload Identity configuration, we leverage the templating
+      // functionality to dynamically derive the SPIFFE ID based on attributes
+      // from the attestation process. Implicitly, the workload must have
+      // passed Kubernetes workload attestation to be issued a SVID because
+      // the rules refer to attributes derived from Kubernetes workload
+      // attestation.
+      id: "/apps/{{ workload.kubernetes.namespace }}/{{ workload.kubernetes.service_account }}",
     },
-    rules: {
-      allows: [
-        {
-          conditions: [
-            {
-              attribute: "workload.kubernetes.namespace",
-              eq: {
-                value: "w2w-demo"
-              }
-            },
-            {
-              attribute: "workload.kubernetes.service_account",
-              eq: {
-                value: "backend-1"
-              }
-            }
-          ]
-        }
-      ]
-    }
   },
 }, { provider: teleportProvider })
 
@@ -90,6 +76,10 @@ export const backend2WorkloadID = new teleport.WorkloadIdentity("w2w-demo-backen
     spiffe: {
       id: "/apps/w2w-demo/backend-2",
     },
+    // In this Workload Identity configuration, we specify rules to dynamically
+    // control which workloads can be issued a SPIFFE SVID using this
+    // Workload Identity. These rules are based on attributes determined by the
+    // attestation process.
     rules: {
       allows: [
         {
