@@ -23,8 +23,7 @@ import {
 
 import {
   webWorkloadID,
-  backend1WorkloadID,
-  backend2WorkloadID,
+  backendWorkloadIDTemplate,
   appBotWebRole,
   appBotBackend1Role,
   appBotBackend2Role,
@@ -48,8 +47,7 @@ export default () => ({
   deploymentRolePolicy,
   rolesAnywhereProfile,
   webWorkloadID,
-  backend1WorkloadID,
-  backend2WorkloadID,
+  backendWorkloadIDTemplate,
   appBotWebRole,
   appBotBackend1Role,
   appBotBackend2Role,
