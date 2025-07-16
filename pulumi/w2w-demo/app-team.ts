@@ -46,6 +46,7 @@ export const backendWorkloadIDTemplate = new teleport.WorkloadIdentity("w2w-demo
     description: "Workload ID template for w2w-demo backends",
     labels: {
       "env": "w2w-demo",
+      "component": "backend",
     }
   },
   spec: {
@@ -82,37 +83,16 @@ export const appBotWebRole = new teleport.Role("w2w-demo-app-bot-web", {
   }
 }, { provider: teleportProvider })
 
-export const appBotBackend1Role = new teleport.Role("w2w-demo-app-bot-backend-1", {
+export const appBotBackendRole = new teleport.Role("w2w-demo-app-bot-backend", {
   version: "v7",
   metadata: {
-    name: "w2w-demo-app-bot-backend-1",
+    name: "w2w-demo-app-bot-backend",
   },
   spec: {
     allow: {
       workloadIdentityLabels: {
         "env": ["w2w-demo"],
-        "component": ["backend-1"],
-      },
-      rules: [
-        {
-          resources: ["workload_identity"],
-          verbs: ["list", "read"],
-        }
-      ],
-    }
-  }
-}, { provider: teleportProvider })
-
-export const appBotBackend2Role = new teleport.Role("w2w-demo-app-bot-backend-2", {
-  version: "v7",
-  metadata: {
-    name: "w2w-demo-app-bot-backend-2",
-  },
-  spec: {
-    allow: {
-      workloadIdentityLabels: {
-        "env": ["w2w-demo"],
-        "component": ["backend-2"],
+        "component": ["backend"],
       },
       rules: [
         {
@@ -126,7 +106,7 @@ export const appBotBackend2Role = new teleport.Role("w2w-demo-app-bot-backend-2"
 
 export const appBot = new teleport.Bot("w2w-demo-app", {
   name: "w2w-demo-app-bot",
-  roles: ["w2w-demo-app-bot-web", "w2w-demo-app-bot-backend-1", "w2w-demo-app-bot-backend-2"],
+  roles: ["w2w-demo-app-bot-web", "w2w-demo-app-bot-backend"],
 }, { provider: teleportProvider })
 
 export const appBotIAMJoinToken = new teleport.ProvisionToken("w2w-demo-web-bot", {
