@@ -1,8 +1,7 @@
 on:
-  schedule:
-    # Run weekly on Sundays at 2 AM UTC
-    - cron: '0 */12 * * *'
-  workflow_dispatch:
+  pull_request:
+    branches-ignore:
+      - main
 
 jobs:
   pulumi:
@@ -12,7 +11,7 @@ jobs:
       id-token: write
       contents: read
     # if you added a workflow name in the previous step, make sure you use the same value her
-    name: pulumi-up
+    name: pulumi-preview
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -33,13 +32,12 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 10
-      - name: Run Pulumi up
+      - name: Run Pulumi preview
         run: |
           pnpm install -g typescript
           pulumi install
           pulumi login s3://mwi-demo-infra-iac-state?profile=mwi-demo-manager
           pulumi stack select demo && pulumi pre --diff
-          pulumi stack select demo && pulumi up --yes --skip-preview
         working-directory: /home/runner/work/mwi-demo-infra/mwi-demo-infra/pulumi
         env:
           AWS_PROFILE: mwi-demo-manager
