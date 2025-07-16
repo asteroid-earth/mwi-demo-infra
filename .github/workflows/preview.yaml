@@ -11,7 +11,7 @@ jobs:
       id-token: write
       contents: read
     # if you added a workflow name in the previous step, make sure you use the same value her
-    name: pulumi-up
+    name: pulumi-preview
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
