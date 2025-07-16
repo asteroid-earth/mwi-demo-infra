@@ -1,21 +1,22 @@
 {
-    "name": "mwi-demo-infra",
-    "main": "index.ts",
-    "devDependencies": {
-        "@types/node": "^18.19.87",
-        "@types/sync-fetch": "^0.4.3",
-        "typescript": "^5.8.3"
-    },
-    "dependencies": {
-        "@pulumi/aws": "^6.78.0",
-        "@pulumi/awsx": "^2.21.1",
-        "@pulumi/pulumi": "^3.167.0",
-        "@pulumi/teleport": "file:sdks/teleport",
-        "sync-fetch": "0.6.0-2"
-    },
-    "pnpm": {
-        "onlyBuiltDependencies": [
-            "@pulumi/teleport"
-        ]
-    }
+  "name": "mwi-demo-infra",
+  "main": "index.ts",
+  "devDependencies": {
+    "@types/node": "^18.19.87",
+    "@types/sync-fetch": "^0.4.3",
+    "prettier": "3.6.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@pulumi/aws": "^6.78.0",
+    "@pulumi/awsx": "^2.21.1",
+    "@pulumi/pulumi": "^3.167.0",
+    "@pulumi/teleport": "file:sdks/teleport",
+    "sync-fetch": "0.6.0-2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@pulumi/teleport"
+    ]
+  }
 }

@@ -1,0 +1,6 @@
+# Ignore artifacts:
+build
+coverage
+action_support
+.github
+node_modules
