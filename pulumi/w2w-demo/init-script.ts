@@ -44,5 +44,5 @@ curl -sL https://mwidemo.cloud.gravitational.io/scripts/install.sh | bash
 teleport install systemd
 systemctl enable teleport
 systemctl start teleport
-`
+`;
 }

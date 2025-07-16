@@ -8,7 +8,10 @@ import {
 } from "./ec2";
 
 import {
-  ansibleBot, ansibleBotRole, ansibleJoinToken, instanceJoinToken
+  ansibleBot,
+  ansibleBotRole,
+  ansibleJoinToken,
+  instanceJoinToken,
 } from "./teleport";
 
 export default () => ({

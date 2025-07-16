@@ -16,4 +16,4 @@ export const teleportProvider = new teleport.Provider("mwi-demo", {
   addr: "mwidemo.cloud.gravitational.io:443",
   joinMethod: "github",
   joinToken: "mwi-demo-aws-manager",
-})
+});

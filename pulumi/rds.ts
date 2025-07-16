@@ -3,14 +3,18 @@ import { awsProvider } from "./providers";
 import { tags } from "./tags";
 import { vpc } from "./vpc";
 
-const dbSubnets = new aws.rds.SubnetGroup("default", {
-  name: "main",
-  subnetIds: vpc.privateSubnetIds,
-  tags: {
-    ...tags,
-    Name: "mwi-demo-db-subnet-group",
-  }
-}, { provider: awsProvider });
+const dbSubnets = new aws.rds.SubnetGroup(
+  "default",
+  {
+    name: "main",
+    subnetIds: vpc.privateSubnetIds,
+    tags: {
+      ...tags,
+      Name: "mwi-demo-db-subnet-group",
+    },
+  },
+  { provider: awsProvider },
+);
 
 const devDB = new aws.rds.Instance("dev", {
   allocatedStorage: 10,

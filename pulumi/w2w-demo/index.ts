@@ -18,7 +18,7 @@ import {
 import {
   deploymentRole,
   deploymentRolePolicy,
-  rolesAnywhereProfile
+  rolesAnywhereProfile,
 } from "./roles-anywhere";
 
 import {
@@ -56,4 +56,4 @@ export default () => ({
   appBot,
   appBotIAMJoinToken,
   appBotK8sJoinToken,
-})
+});

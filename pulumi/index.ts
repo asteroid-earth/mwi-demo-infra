@@ -8,4 +8,4 @@ vpcResources();
 eksResources();
 rdsResources();
 ansibleResources();
-w2wDemoResources()
+w2wDemoResources();

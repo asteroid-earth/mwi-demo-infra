@@ -36,7 +36,7 @@ curl -sL https://mwidemo.cloud.gravitational.io/scripts/install.sh | bash
 teleport install systemd
 systemctl enable teleport
 systemctl start teleport
-`
+`;
 }
 
 export function getAnsibleInitScript() {
@@ -143,5 +143,5 @@ cat << EOF > /home/ubuntu/crontab
 EOF
 
 sudo su ubuntu -c "crontab /home/ubuntu/crontab"
-`
+`;
 }
