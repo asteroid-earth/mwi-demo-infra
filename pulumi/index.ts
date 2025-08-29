@@ -3,9 +3,11 @@ import eksResources from "./eks";
 import rdsResources from "./rds";
 import ansibleResources from "./ansible";
 import w2wDemoResources from "./w2w-demo";
+import agentDemoResources from "./agent-demo";
 
 vpcResources();
 eksResources();
 rdsResources();
 ansibleResources();
-w2wDemoResources()
+w2wDemoResources();
+agentDemoResources();
