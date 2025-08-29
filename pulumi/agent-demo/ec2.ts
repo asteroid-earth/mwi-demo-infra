@@ -97,7 +97,7 @@ export const agentTargetInstance = new aws.ec2.Instance("agent-target-instance",
 
 export const agentAppInstance = new aws.ec2.Instance("agent-app-instance", {
   ami: "ami-0e8c824f386e1de06", // ubuntu 24.04 arm64
-  instanceType: aws.ec2.InstanceType.T4g_Micro,
+  instanceType: aws.ec2.InstanceType.T4g_Small,
   iamInstanceProfile: instanceProfile.name,
   subnetId: vpc.privateSubnetIds[0],
   tags: {
