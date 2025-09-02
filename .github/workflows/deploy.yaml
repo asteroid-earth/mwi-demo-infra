@@ -22,7 +22,7 @@ jobs:
       - name: Fetch Teleport binaries
         uses: teleport-actions/setup@v1
         with:
-          version: 17.5.2
+          version: 18.1.5
       - name: Export tbot artifacts
         run: tbot start --oneshot -c ./action_support/bot.yaml
       - name: Display SVID
